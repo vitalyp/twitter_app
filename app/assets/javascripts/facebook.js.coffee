@@ -1,5 +1,7 @@
 jQuery ->
   $('body').prepend('<div id="fb-root"></div>')
+  
+  
 
 # pass FB_APP_ID from Controller via its View:
 window.fbAsyncInit = ->
@@ -12,6 +14,11 @@ window.fbAsyncInit = ->
       version    : 'v2.5',
       cookie: true
     });
+    
+  FB.getLoginStatus (response) ->
+    console.log "getLoginStatus:"+response
+    console.log response
+    return
 
   $('#sign_in').click (e) ->
     e.preventDefault()
