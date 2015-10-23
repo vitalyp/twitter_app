@@ -1,5 +1,6 @@
-APP_ID = '937758376302379'
-APP_SECRET = '69b294eb1384fbf73c4d8f8f5d9448bf'
+# environment variables can be defined in .env file.
+APP_ID = ENV['FB_APP_ID']
+APP_SECRET = ENV['FB_APP_SECRET']
 
 OmniAuth.config.logger = Rails.logger
 

@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 # ENV-specified gems:
 gem "spring", group: :development                           # springify
 gem 'byebug', group: [:development, :test]                  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+gem 'dotenv-rails', :groups => [:development, :test]        # .env file support
 gem 'web-console', '~> 2.0' , group: [:development, :test]  # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake doc:rails generates the API under doc/api.
 # OAuth2 Strategies
