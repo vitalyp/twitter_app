@@ -7,7 +7,7 @@ jQuery ->
 window.fbAsyncInit = ->
   FB_APP_ID =  $("meta[name=fb-app-id]").attr("content");
   console.log("FB_APP_ID:" + FB_APP_ID);
-  console.log('LALA!')
+  
   FB.init({
       appId      : FB_APP_ID,
       xfbml      : true,
