@@ -5,5 +5,6 @@ APP_SECRET = ENV['FB_APP_SECRET']
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, APP_ID, APP_SECRET
+  provider :facebook, APP_ID, APP_SECRET,
+    {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
 end
