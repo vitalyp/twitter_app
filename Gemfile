@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Standard Rails set of gems:
 gem 'rails', '4.2.4'
@@ -10,6 +10,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'twitter-bootstrap-rails'
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # ENV-specified gems:
 gem "spring", group: :development                           # springify
 gem 'byebug', group: [:development, :test]                  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -19,3 +21,4 @@ gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake d
 # OAuth2 Strategies
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
