@@ -11,8 +11,23 @@ if Rails.env.production?
     provider :facebook, FB_APP_ID, FB_APP_SECRET,
              :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
     ## GOOGLE
-    provider :google_oauth2, G_APP_ID, G_APP_SECRET,
-             scope: 'email, profile', image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google'
+    #provider :google_oauth2, G_APP_ID, G_APP_SECRET,
+    #         scope: 'email, profile', image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google'
+
+    provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
+      name: 'google',
+      skip_jwt: true,
+      scope: 'email, profile',
+      prompt: 'select_account',
+      image_aspect_ratio: 'square',
+      image_size: 50,
+      setup: (lambda do |env|
+       request = Rack::Request.new(env)
+       env['omniauth.strategy'].options['token_params'] = {
+           redirect_uri: 'https://vitalyp-twitter-app.herokuapp.com/auth/google/callback'
+       }
+      end)
+    }
   end
 else
   OmniAuth.config.full_host = 'http://local.twitter.com:3000'
