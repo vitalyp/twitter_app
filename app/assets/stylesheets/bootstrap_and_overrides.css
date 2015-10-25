@@ -1,7 +1,12 @@
 /*
   =require twitter-bootstrap-static/bootstrap
-
-  Use Font Awesome icons (default)
-  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
-  */
+*/
+
+/* margin-bottom classes */
+.margin-bottom-xs {margin-bottom: 4px  }
+.margin-bottom-sm {margin-bottom: 8px  }
+.margin-bottom-md {margin-bottom: 16px }
+.margin-bottom-lg {margin-bottom: 32px }
+
+.calign { text-align: center; }

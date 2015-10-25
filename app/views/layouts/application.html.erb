@@ -8,18 +8,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-<div id="user-widget">
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to 'Twitter-App', root_path, class: 'navbar-brand' %>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+  <% end %>
+</div>
+
+<div class="container">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <%= link_to "Sign out", signout_path, id: "sign_out_facebook" %>
   <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <%= link_to "Sign in with Google", "/auth/google", id: "sign_in_google" %>
+    <%= render partial:'sessions/signin'%>
+    <hr class='margin-bottom-md'/>
+    <%= render partial: 'extra/readme'%>
   <% end %>
 </div>
 
 <%= yield %>
+
+<div class="container-fluid footer-container">
+  <%= render partial: 'extra/footer'%>
+</div>
 
 </body>
 </html>

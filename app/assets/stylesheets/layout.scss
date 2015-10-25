@@ -1,0 +1,27 @@
+.footer-container {
+  background: #262626;
+  min-height: 230px;
+  color: rgb(187, 187, 187);
+  display: block;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 10px 10px;
+}
+.footer-container .devider {
+  margin: 0 5px;
+}
+.footer-container img {
+  height: 80px;
+  opacity: 0.8;
+  border-radius: 7px;
+  cursor: move;
+}
+.footer-container .footer-menu {
+  font-size: 13px;
+}
+.footer-container .author {
+  color: white;
+}
+.footer-container .skype {
+  color: #65d2fa;
+}
