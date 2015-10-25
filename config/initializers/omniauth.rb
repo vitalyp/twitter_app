@@ -12,11 +12,15 @@ if Rails.env.production?
              :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
     ## GOOGLE
     provider :google_oauth2, G_APP_ID, G_APP_SECRET,
-             scope: 'profile', image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google'
+             scope: 'email, profile', image_aspect_ratio: 'square', image_size: 48, access_type: 'online', name: 'google'
   end
 else
   OmniAuth.config.full_host = 'http://local.twitter.com:3000'
   Rails.application.config.middleware.use OmniAuth::Builder do
+
+    provider :facebook, FB_APP_ID, FB_APP_SECRET,
+      :scope => 'email', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}
+
     provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
       name: 'google',
       skip_jwt: true,

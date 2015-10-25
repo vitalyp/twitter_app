@@ -58,3 +58,17 @@ Write the queries for:
 - get the list of tweets having several exact matches of both name and status, from the user ‘Phil’. Order by matches count.
 - get the list of users names having more than 10 tweets in status ‘starred’. Order by user_id.
 
+## Heroku cheatsheet
+
+Setup remotes:
+
+    > git remote add heroku git@heroku.com:vitalyp-twitter-app.git
+    > git config heroku.remote heroku
+
+Setup database:
+
+    > heroku run rake --trace db:migrate
+    
+Logs view:
+
+    > heroku logs --source app --tail
