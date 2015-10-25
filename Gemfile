@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'twitter-bootstrap-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'haml-rails'
 # ENV-specified gems:
 gem "spring", group: :development                           # springify
 gem 'byebug', group: [:development, :test]                  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
