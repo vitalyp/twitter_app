@@ -9,7 +9,7 @@ namespace :db do
       case ActiveRecord::Base.connection.adapter_name
         when 'SQLite'
           then 'DELETE FROM tbl'
-        else 'TRUNCATE tbl'
+        else 'TRUNCATE tbl CASCADE'
       end
     tables = ActiveRecord::Base.connection.tables - ['schema_migrations']
     p 'Truncating tables (except schema_migrations), please wait'
