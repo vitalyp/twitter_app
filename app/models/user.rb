@@ -16,17 +16,17 @@ class User < ActiveRecord::Base
       profile = user.build_profile
       profile.save #-> touch to get parent id
 
-      p "auth:"
-      p auth
-      p "auth info:"
-      p auth['info']
-
-
-      profile.name = auth['info']['name'] rescue nil
-      profile.first_name = auth['info']['first_name'] rescue nil
-      profile.last_name = auth['info']['last_name'] rescue nil
-      profile.picture_url = auth['info']['image'] rescue nil
-      profile.email = auth['info']['email'] rescue nil
+      case auth.provider
+        when 'google'
+          profile.name = auth['info']['name']
+          profile.first_name = auth['info']['first_name']
+          profile.last_name = auth['info']['last_name']
+          profile.picture_url = auth['info']['image']
+          profile.email = auth['info']['email']
+        when 'facebook'
+          profile.name = auth['info']['name']
+          profile.picture_url = auth['info']['image']
+      end
 
       profile.avatar_from_url auth['info']['image']
       profile.avatar.save rescue nil
