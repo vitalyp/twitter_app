@@ -23,3 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake d
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+# Avatar files
+gem 'paperclip'
+# Use babosa for url normalize
+gem 'babosa'
