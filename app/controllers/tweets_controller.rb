@@ -1,4 +1,8 @@
 class TweetsController < ApplicationController
-    def index
-    end
+  before_action :require_login
+
+  def index
+
+  end
+
 end

@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
   
   root 'tweets#index'
+
+  resources :tweets
+  resources :sessions
+  resources :users
+
+  get ':id' => 'users#show', as: :user_profile
+  get ':id/setting' => 'users#edit', as: :user_setting
+  match ':id/setting' => 'users#update', via: [:put, :patch]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
