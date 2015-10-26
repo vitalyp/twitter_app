@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
       profile = user.build_profile
       profile.save #-> touch to get parent id
 
+      p "auth:"
+      p auth
+      p "auth info:"
+      p auth['info']
+
+
       profile.name = auth['info']['name'] rescue nil
       profile.first_name = auth['info']['first_name'] rescue nil
       profile.last_name = auth['info']['last_name'] rescue nil
