@@ -1,13 +1,14 @@
-##Twitter is a social networking microblogging service that allows registered members to broadcast short posts called tweets.
-     ________   ___       ___    _____   ________   ________    _____   ______          ____     _____    _____   
-    (___  ___) (  (       )  )  (_   _) (___  ___) (___  ___)  / ___/  (   __ \        (    )   (  __ \  (  __ \  
-        ) )     \  \  _  /  /     | |       ) )        ) )    ( (__     ) (__) )       / /\ \    ) )_) )  ) )_) ) 
-       ( (       \  \/ \/  /      | |      ( (        ( (      ) __)   (    __/       ( (__) )  (  ___/  (  ___/  
-        ) )       )   _   (       | |       ) )        ) )    ( (       ) \ \  _       )    (    ) )      ) )     
-       ( (        \  ( )  /      _| |__    ( (        ( (      \ \___  ( ( \ \_))     /  /\  \  ( (      ( (      
-       /__\        \_/ \_/      /_____(    /__\       /__\      \____\  )_) \__/     /__(  )__\ /__\     /__\     
-                                                                                                              
+##How to use:
+    git clone git@github.com:vitalyp/twitter_app.git
+    bundle
+    rake db:migrate #-> may require you local db setup step
 
+##Rake tasks:
+
+    rake db:truncate #-> truncates database
+
+
+##Twitter is a social networking microblogging service that allows registered members to broadcast short posts called tweets.
 
 >Create a small example of information network made up of 100-character messages called Tweets.
 
