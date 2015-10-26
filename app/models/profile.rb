@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 
   has_attached_file :avatar, styles: { original: '83x83' },
-    path: ':rails_root/log/users_data/:attachment/:id/:style/:filename',
+    path: ':rails_root/public/users_data/:attachment/:id/:style/:filename',
     url: '/assets/:attachment/:id/:style/:filename',
     default_url: "/assets/null.png"
 
