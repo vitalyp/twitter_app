@@ -1,3 +1,16 @@
+/* Adopt to small screens */
+@media (max-width: 992px) {
+  .offset_on_small {
+    margin-bottom: 25px;
+  }
+  .fa-cog.fa-spin.fa-2x {
+    font-size: 40px!important;
+    color: #f3201b;
+  }
+}
+
+
+
 .soc-square {
   cursor: pointer;
   padding: 5px;
