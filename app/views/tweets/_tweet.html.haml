@@ -1,9 +1,22 @@
-.row.single-tweet{id: tweet.id}
+.row.single-tweet{'data-tweet_id'=> tweet.id}
   .col-md-1.tweet-author
     %img{src: tweet.user.profile.picture_url}
     .name= tweet.user.short_name
-  .col-md-7.tweet-name
+  .col-md-8.tweet-name
     = tweet.name
+  .col-md-3.tweet-icons
+    %span.comment
+      %i.fa.fa-comment.transition
+    %span.star
+      %i.fa.fa-star.transition
+    %span.like
+      %i.fa.fa-heart.transition
+    %span.trash{'data-tweet_id'=> tweet.id}
+      %i.fa.fa-trash-o
+    %br
+    .timeago
+      = relative_time(tweet.created_at)
+
   -#.row.tweet-comments
   -#  Comments:
   -#  %br

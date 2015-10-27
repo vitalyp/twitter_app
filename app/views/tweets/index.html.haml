@@ -27,6 +27,12 @@
 -#END
 :javascript
   var channel = pusher.subscribe('tweet_channel');
+  channel.bind('destroy_tweet', function(data) {
+    tweet_id = data.tweet_id;
+    $('.single-tweet[data-tweet_id="ID"]'.replace('ID', tweet_id)).remove();
+  });
+
+  var channel = pusher.subscribe('tweet_channel');
   channel.bind('new_tweet', function(data) {
     tweet_id = data.tweet_id;
     tweet_name = data.tweet_name;
@@ -51,7 +57,7 @@
   });
   function add_tweet(tweet_id, tweet_name, user_name, user_picture_url) {
     new_tweet = (
-      "<div id='tweet_id' class='row single-tweet'>"+
+      "<div data-tweet_id='tweet_id' class='row single-tweet'>"+
         "<div class='col-md-1 tweet-author'>"+
           "<img src='user_picture_url'>"+
           "<div class='name'>user_name</div>"+
@@ -64,5 +70,5 @@
       replace('tweet_name', tweet_name).
       replace('user_name', user_name).
       replace('user_picture_url', user_picture_url);
-    $('#recent_tweets').append(new_tweet);
+    $('#recent_tweets').prepend(new_tweet);
   }

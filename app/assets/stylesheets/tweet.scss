@@ -1,12 +1,38 @@
 .single-tweet {
-  padding: 10px;
+  padding: 0px 3px;
   border: 1px solid gray;
-  border-radius: 18px;
+  border-radius: 12px;
   margin: 10px 0;
 }
 
 .single-tweet .tweet-author{
-  padding: 5px;
+  padding: 9px 0 0 5px;
+  text-align: center;
+}
+
+.single-tweet .tweet-icons {
+  text-align: right;
+  padding-top: 6px;
+}
+
+.single-tweet .tweet-icons i {
+  cursor: pointer;
+}
+
+.single-tweet .tweet-icons .comment i:hover{
+  color: #32b73c;
+}
+
+.single-tweet .tweet-icons .star i:hover{
+  color: #7bc4ff;
+}
+
+.single-tweet .tweet-icons .like i:hover{
+  color: #ff15dd;
+}
+
+.single-tweet .tweet-icons .trash i:hover{
+  color: #f33319;
 }
 
 .single-tweet .tweet-author img{
@@ -17,12 +43,19 @@
 }
 
 .single-tweet .tweet-author .name{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .single-tweet .tweet-name{
   padding: 10px;
-  font-size: 16px;
+  font-size: 17px;
+}
+
+.single-tweet .timeago{
+  float: right;
+  margin-top: 18px;
+  font-size: 12px;
+  color: gray;
 }
 
 .single-tweet .tweet-comments{
