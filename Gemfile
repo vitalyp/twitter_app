@@ -27,3 +27,5 @@ gem "omniauth-google-oauth2"
 gem 'paperclip'
 # Use babosa for url normalize
 gem 'babosa'
+# Ruby server library for the Pusher API http://pusher.com
+gem 'pusher'
