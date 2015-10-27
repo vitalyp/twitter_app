@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_many :tweets
+  has_many :comments
   accepts_nested_attributes_for :profile
 
   def self.from_omniauth(auth)
@@ -16,6 +17,9 @@ class User < ActiveRecord::Base
       profile = user.build_profile
       profile.save #-> touch to get parent id
 
+      p "AUTH:"
+      p auth
+      p "PROVIDER: #{auth.provider}"
       case auth.provider
         when 'google'
           profile.name = auth['info']['name']
@@ -26,23 +30,25 @@ class User < ActiveRecord::Base
         when 'facebook'
           profile.name = auth['info']['name']
           profile.picture_url = auth['info']['image']
+          p "auth['info']['name']:"
+          p auth['info']['name']
+          p "profile:"
+          p profile
       end
 
-      profile.avatar_from_url auth['info']['image']
-      profile.avatar.save rescue nil
+      #profile.avatar_from_url auth['info']['image']
+      #profile.avatar.save rescue nil
       profile.save
       user.save
       user
     end
   end
 
-  def username
-    "userName"
-    #self.email.split(/@/).first
+  def short_name
+    name.split(' ').first
   end
 
-  def to_param
-    "#{id} #{username}".to_slug.normalize.to_s
+  def picture_url
+    self.profile.picture_url
   end
-
 end
