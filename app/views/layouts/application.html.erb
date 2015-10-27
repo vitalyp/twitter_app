@@ -3,9 +3,11 @@
 <head>
   <title>Twitter</title>
   <%= tag :meta, :name => "fb-app-id", :content => "#{ENV['FB_APP_ID']}"%>
+  <%= tag :meta, :name => "pusher-key", :content => "#{ENV['PUSHER_KEY']}"%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
 
@@ -17,8 +19,9 @@
     <div id="navbar">
       <ul class="nav navbar-nav">
         <% if current_user %>
-          <li>Welcome <strong><%= current_user.name %></strong>!</li>
-          <li><%= link_to "Sign out", signout_path, id: "sign_out_facebook" %></li>
+          <li>
+            <%= link_to "Sign out", signout_path, id: "sign_out_facebook" %>
+          </li>
         <% end %>
       </ul>
     </div>

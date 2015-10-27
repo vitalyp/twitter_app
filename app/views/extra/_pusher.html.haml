@@ -1,0 +1,13 @@
+- content_for :head do
+  %script{:src => "https://js.pusher.com/3.0/pusher.min.js"}
+  :javascript
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+    PUSHER_KEY =  $("meta[name=pusher-key]").attr("content");
+    var pusher = new Pusher(PUSHER_KEY, {
+      encrypted: true
+    });

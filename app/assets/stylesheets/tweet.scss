@@ -1,0 +1,31 @@
+.single-tweet {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 18px;
+  margin: 10px 0;
+}
+
+.single-tweet .tweet-author{
+  padding: 5px;
+}
+
+.single-tweet .tweet-author img{
+  height: 50px;
+  opacity: 0.8;
+  border-radius: 7px;
+  border: 1px solid black;
+}
+
+.single-tweet .tweet-author .name{
+  font-size: 10px;
+}
+
+.single-tweet .tweet-name{
+  padding: 10px;
+  font-size: 16px;
+}
+
+.single-tweet .tweet-comments{
+  padding: 10px;
+  font-size: 12px;
+}

@@ -1,3 +1,28 @@
 // Place all the styles related to the Tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.tweets {
+  /*background-color: #dfded2;*/
+  /*padding-top: 20px;*/
+  font-size: 16px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: rgba(20, 20, 20, 0.5) 1px 1px 5px;
+}
+
+.tweets .left-side {
+
+}
+
+.tweets .right-side {
+  border-left: 1px solid gray;
+  text-align: right;
+  min-height: 300px;
+}
+
+.tweets .right-side img{
+  height: 50px;
+  opacity: 0.8;
+  border-radius: 7px;
+}

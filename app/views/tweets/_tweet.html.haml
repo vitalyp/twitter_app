@@ -1,0 +1,10 @@
+.row.single-tweet{id: tweet.id}
+  .col-md-1.tweet-author
+    %img{src: tweet.user.profile.picture_url}
+    .name= tweet.user.short_name
+  .col-md-7.tweet-name
+    = tweet.name
+  -#.row.tweet-comments
+  -#  Comments:
+  -#  %br
+  -#  = render tweet.comments

@@ -1,6 +1,68 @@
-.container
+= render 'extra/pusher'
+
+.container.tweets
   .row
-    .col-md-10
-      = current_user.to_s
-    .col-md-2
-      = current_user.id.to_s
+    .col-md-10.left-side
+      .row.new-tweet
+        .col-md-8.col-md-offset-2
+          .input-group.input-group-lg
+            %input.form-control{id:'post_name', placeholder:'post your 100-char tweet..', type:'text', maxlength:100}
+            %span.input-group-btn
+              %button.btn.btn-default{id:'post_btn', type:'button'} Post
+          %span.help-block
+            Your post will be shown to others immediately!
+      .row
+        #recent_tweets.col-md-10
+          Recent tweets:
+          =render @tweets
+
+    .col-md-2.right-side
+      %p
+        %b Your profile:
+      %img{src:current_user.profile.picture_url}
+      %br
+      %br
+      = current_user.name
+      %hr
+-#END
+:javascript
+  var channel = pusher.subscribe('tweet_channel');
+  channel.bind('new_tweet', function(data) {
+    tweet_id = data.tweet_id;
+    tweet_name = data.tweet_name;
+    user_name = data.user_name;
+    user_picture_url = data.user_picture_url;
+    console.log('new tweet registered');
+    console.log('tweet id: ' + tweet_id);
+    console.log('tweet name: ' + tweet_name);
+    console.log('user name: ' + user_name);
+    console.log('user picture url: ' + user_picture_url);
+    add_tweet(tweet_id, tweet_name, user_name, user_picture_url)
+
+  });
+  channel.bind('new_comment', function(data) {
+    tweet_id = data.tweet_id;
+    comment_name = data.comment_name;
+    user_picture_url = data.user_picture_url;
+    console.log('new comment registered');
+    console.log('tweet id: ' + tweet_id);
+    console.log('comment name: ' + comment_name);
+    console.log('user picture url: ' + user_picture_url);
+  });
+  function add_tweet(tweet_id, tweet_name, user_name, user_picture_url) {
+    new_tweet = (
+      "<div id='tweet_id' class='row single-tweet'>"+
+        "<div class='col-md-1 tweet-author'>"+
+          "<img src='user_picture_url'>"+
+          "<div class='name'>user_name</div>"+
+        "</div>"+
+        "<div class='col-md-7 tweet-name'>"+
+          "tweet_name"+
+        "</div>"+
+      "</div>").
+      replace('tweet_id', tweet_id).
+      replace('tweet_name', tweet_name).
+      replace('user_name', user_name).
+      replace('user_picture_url', user_picture_url);
+    $('#recent_tweets').append(new_tweet);
+  }
