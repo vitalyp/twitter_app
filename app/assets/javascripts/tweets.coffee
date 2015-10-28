@@ -1,8 +1,7 @@
 #
 # TWEETs Icons Functions:
-tweet_trash = (tweet_id) ->
+window.tweet_trash = (tweet_id) ->
   if confirm('Are you sure you want to delete this Tweet?')
-    tweet_id = $(this).data('tweet_id')
     $.ajax
       url: '/tweets/'+tweet_id
       type: 'DELETE'

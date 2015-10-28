@@ -4,6 +4,16 @@
   border-radius: 12px;
   margin: 10px 0;
 }
+.single-tweet.removed {
+  text-align: center;
+  color: rgba(51, 51, 51, 0.63);
+  font-size: 14px;
+}
+
+.single-tweet hr {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
 
 .single-tweet .tweet-author{
   padding: 9px 0 0 5px;
@@ -17,6 +27,10 @@
 
 .single-tweet .tweet-icons i {
   cursor: pointer;
+}
+
+.single-tweet .tweet-icons .js {
+  padding-right: 4px;
 }
 
 .single-tweet .tweet-icons .comment i:hover{
