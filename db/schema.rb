@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026235311) do
+ActiveRecord::Schema.define(version: 20151028082808) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,28 @@ ActiveRecord::Schema.define(version: 20151026235311) do
 
   add_index "comments", ["tweet_id"], name: "index_comments_on_tweet_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "follows", force: :cascade do |t|
+    t.string   "follower_type"
+    t.integer  "follower_id"
+    t.string   "followable_type"
+    t.integer  "followable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "likes", force: :cascade do |t|
+    t.string   "liker_type"
+    t.integer  "liker_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "fk_likeables"
+  add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"

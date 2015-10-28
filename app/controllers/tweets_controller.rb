@@ -20,8 +20,7 @@ class TweetsController < ApplicationController
           user_id: @tweet.user.id
         })
       rescue Pusher::Error => e
-        p e
-        status = e
+        p e; status = e
       end
       render :json => { status: status }
     else
@@ -37,12 +36,51 @@ class TweetsController < ApplicationController
       begin
         Pusher.trigger('tweet_channel', 'destroy_tweet', { tweet_id: params[:id]})
       rescue Pusher::Error => e
-        p e
-        status = e
+        p e; status = e
       end
       render :json => { status: status }
     else
       render :json => { status: 'false' }, :status => 500
+    end
+  end
+
+  def like
+    @tweet = Tweet.find(params[:id])
+    status = false
+    if @tweet
+      current_user.toggle_like!(@tweet) if @tweet
+      begin
+        Pusher.trigger('tweet_channel', 'like_tweet', {
+          tweet_id: @tweet.id,
+          like_status: current_user.likes?(@tweet) ? 'yes' : 'no',
+          user_id: current_user.id,
+          likers_count: @tweet.likers(User).count
+        })
+        status = 'true'
+      rescue Pusher::Error => e
+        p e; status = e
+      end
+    end
+    render :json => { status: status }
+  end
+
+  def star # follow/favorite
+    @tweet = Tweet.find(params[:id])
+    status = false
+    if @tweet
+      current_user.toggle_follow!(@tweet)
+      begin
+        Pusher.trigger('tweet_channel', 'star_tweet', {
+            tweet_id: @tweet.id,
+            star_status: current_user.follows?(@tweet) ? 'yes' : 'no' ,
+            user_id: current_user.id,
+            user_name: @tweet.user.short_name
+        })
+        status = 'true'
+      rescue Pusher::Error => e
+        p e; status = e
+      end
+      render :json => { status: status }
     end
   end
 

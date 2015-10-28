@@ -11,11 +11,16 @@
         %span.comment{onclick:"tweet_comment('#{tweet.id}')"}
           %i.fa.fa-comment.transition
       .col-sm-3
-        %span.star{onclick:"tweet_toggle_star('#{tweet.id}')"}
+        %span.star{ 'data-star-tweet-id'=> tweet.id,
+                    onclick:"tweet_toggle_star('#{tweet.id}')"}
           %i.fa.fa-star.transition
-      .col-sm-3
-        %span.like{onclick:"tweet_toggle_like('#{tweet.id}')"}
+      .col-sm-3{style:'text-align:center'}
+        %span.like{ 'data-like-tweet-id'=> tweet.id,
+                    class:"#{"liked" if tweet.liked_by?(current_user)}",
+                    onclick:"tweet_toggle_like('#{tweet.id}')"}
           %i.fa.fa-heart.transition
+        %i.like-count{'data-like-count-tweet-id'=> tweet.id}
+          = tweet.likers(User).count
       .col-sm-3
         - if tweet.user == current_user
           %span.trash{onclick:"tweet_trash('#{tweet.id}')"}

@@ -5,7 +5,12 @@ Rails.application.routes.draw do
   
   root 'tweets#index'
 
-  resources :tweets
+  resources :tweets do
+    member do
+      post 'like'
+      post 'star'
+    end
+  end
   resources :comments
   resources :sessions
   resources :users

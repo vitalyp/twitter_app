@@ -29,3 +29,5 @@ gem 'paperclip'
 gem 'babosa'
 # Ruby server library for the Pusher API http://pusher.com
 gem 'pusher'
+# Speed-up likes, follows
+gem 'socialization'

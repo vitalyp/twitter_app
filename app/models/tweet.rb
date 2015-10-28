@@ -3,5 +3,7 @@ class Tweet < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :comments
 
+  acts_as_likeable
+  acts_as_followable
 
 end

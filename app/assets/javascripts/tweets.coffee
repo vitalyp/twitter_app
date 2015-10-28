@@ -13,11 +13,19 @@ window.tweet_comment = (tweet_id) ->
   jNewComment = $('.single-tweet[data-tweet-id="ID"] .new-comment'.replace('ID', tweet_id));
   jNewComment.toggle()
 
-tweet_toggle_star = (tweet_id) ->
-  alert('TODO: add some star processing')
+window.tweet_toggle_star = (tweet_id) ->
+  $.ajax
+    url: '/tweets/'+tweet_id+'/star'
+    type: 'POST'
+    success: (resp) ->
+      console.log resp
 
-tweet_toggle_like = (tweet_id) ->
-  alert('TODO: add some like processing')
+window.tweet_toggle_like = (tweet_id) ->
+  $.ajax
+    url: '/tweets/'+tweet_id+'/like'
+    type: 'POST'
+    success: (resp) ->
+      console.log resp
 
 #
 # Common interface processing:

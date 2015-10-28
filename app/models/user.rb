@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :tweets
   has_many :comments
+
+  acts_as_liker
+  acts_as_follower
+  acts_as_followable
+
   accepts_nested_attributes_for :profile
 
   def self.from_omniauth(auth)

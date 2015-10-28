@@ -70,3 +70,11 @@
   padding: 10px;
   font-size: 12px;
 }
+
+.single-tweet .tweet-icons .like.liked i{
+  color: red;
+}
+
+.single-tweet .tweet-icons .star.starred i{
+  color: #4557ff;
+}
