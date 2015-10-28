@@ -90,3 +90,17 @@
       star_status == 'yes' ? $(star_icon).addClass('starred') : $(star_icon).removeClass('stared')
     }
   });
+  /*
+  * LIKE Comment event registered
+  * */
+  channel.bind('like_comment', function(data) {
+    var comment_id = data.comment_id;
+    var like_status = data.like_status;
+    var user_id = data.user_id;
+    var likers_count = data.likers_count;
+    if (user_id == cur_user_id) {
+      var like_icon = $('.like[data-like-comment-id="COMMENT_ID"]'.replace('COMMENT_ID', comment_id));
+      like_status == 'yes' ? $(like_icon).addClass('liked') : $(like_icon).removeClass('liked');
+    }
+    $('.like-count[data-like-count-comment-id="COMMENT_ID"]'.replace('COMMENT_ID', comment_id)).html(likers_count);
+  });

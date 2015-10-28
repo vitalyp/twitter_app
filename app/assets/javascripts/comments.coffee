@@ -30,3 +30,17 @@ window.comment_trash = (comment_id) ->
         console.log resp
   return
 
+
+window.comment_toggle_star = (comment_id) ->
+  $.ajax
+    url: '/comments/'+comment_id+'/star'
+    type: 'POST'
+    success: (resp) ->
+      console.log resp
+
+window.comment_toggle_like = (comment_id) ->
+  $.ajax
+    url: '/comments/'+comment_id+'/like'
+    type: 'POST'
+    success: (resp) ->
+      console.log resp

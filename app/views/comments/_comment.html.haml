@@ -8,11 +8,15 @@
   .col-sm-3.comment-icons
     .row
       .col-sm-3
-        %span.star.js{onclick: "comment_toggle_star('#{comment.id}')"}
+        %span.star.js{'data-star-comment-id'=> comment.id, onclick: "comment_toggle_star('#{comment.id}')"}
           %i.fa.fa-star.transition
       .col-sm-3
-        %span.like.js{onclick: "comment_toggle_like('#{comment.id}')"}
+        %span.like.js{'data-like-comment-id'=> comment.id,
+                      class:"#{"liked" if comment.liked_by?(current_user)}",
+                      onclick: "comment_toggle_like('#{comment.id}')"}
           %i.fa.fa-heart.transition
+        %i.like-count{'data-like-count-comment-id'=> comment.id}
+          = comment.likers(User).count
       .col-sm-3
         - if comment.user == current_user
           %span.trash{onclick:"comment_trash('#{comment.id}')"}

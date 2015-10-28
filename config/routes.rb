@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       post 'star'
     end
   end
-  resources :comments
+  resources :comments do
+    member do
+      post 'like'
+    end
+  end
   resources :sessions
   resources :users
 

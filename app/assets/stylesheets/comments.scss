@@ -26,3 +26,11 @@
 .tweet-comments .comment-icons .trash i:hover{
   color: #f33319;
 }
+
+.tweet-comments .comment-icons .like.liked i{
+  color: red;
+}
+
+.tweet-comments .comment-icons .star.starred i{
+  color: #4557ff;
+}

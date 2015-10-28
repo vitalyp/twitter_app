@@ -44,6 +44,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def like
+    @comment = Comment.find(params[:id])
+    status = false
+    if @comment
+      current_user.toggle_like!(@comment) if @comment
+      begin
+        Pusher.trigger('tweet_channel', 'like_comment', {
+                                          comment_id: @comment.id,
+                                          like_status: current_user.likes?(@comment) ? 'yes' : 'no',
+                                          user_id: current_user.id,
+                                          likers_count: @comment.likers(User).count
+                                      })
+        status = 'true'
+      rescue Pusher::Error => e
+        p e; status = e
+      end
+    end
+    render :json => { status: status }
+  end
+
   private
 
   def comment_params
