@@ -20,8 +20,13 @@
     %br
     .timeago
       = relative_time(tweet.created_at)
-
-  -#.row.tweet-comments
-  -#  Comments:
-  -#  %br
-  -#  = render tweet.comments
+  .col-md-12.tweet-comments
+    .row.new-comment
+      .col-md-10.col-md-offset-1
+        .input-group.input-group-sm
+          %input.form-control{placeholder:'new comment..', type:'text', maxlength:100}
+          %span.input-group-btn
+            %button.btn.btn-default.comment-btn{type:'button', onclick:'post_comment_btn(this)'} Comment
+    .row
+      Comments:
+    = render tweet.comments

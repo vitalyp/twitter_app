@@ -9,8 +9,9 @@ window.tweet_trash = (tweet_id) ->
         console.log resp
   return
 
-tweet_comment = (tweet_id) ->
-  alert('TODO: add some comments processing')
+window.tweet_comment = (tweet_id) ->
+  jNewComment = $('.single-tweet[data-tweet-id="ID"] .new-comment'.replace('ID', tweet_id));
+  jNewComment.toggle()
 
 tweet_toggle_star = (tweet_id) ->
   alert('TODO: add some star processing')
@@ -40,5 +41,4 @@ $ ->
     if event.keyCode == 13
       $('#post_btn').click()
     return
-
 
