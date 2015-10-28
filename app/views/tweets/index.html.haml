@@ -44,13 +44,15 @@
   * NEW Comment event registered
   * */
   channel.bind('new_comment', function(data) {
-    tweet_id = data.tweet_id;
-    comment_name = data.comment_name;
-    user_picture_url = data.user_picture_url;
-    console.log('new comment registered');
-    console.log('tweet id: ' + tweet_id);
-    console.log('comment name: ' + comment_name);
-    console.log('user picture url: ' + user_picture_url);
+    var tweet_id = data.tweet_id;
+    var comment_id = data.comment_id
+    var comment_name = data.comment_name;
+    var user_picture_url = data.user_picture_url;
+    var user_name = data.user_name;
+    var user_id = data.user_id;
+    var new_comment = dom_factory.new_comment(comment_id, tweet_id, comment_name, user_name, user_picture_url, user_id);
+    $('.single-tweet[data-tweet-id="ID"] .tweet-comments'.replace('ID', tweet_id)).append(new_comment);
+
   });
   /*
   * DELETE Tweet event registered
@@ -60,3 +62,13 @@
     $(jTweet).html("<hr/>..tweet removed..<hr/>");
     $(jTweet).addClass('removed');
   });
+  /*
+  * DELETE Comment event registered
+  * */
+  channel.bind('destroy_comment', function(data) {
+    var jComment = $('.comment[data-comment-id="ID"]'.replace('ID', data.comment_id));
+    $(jComment).html("<hr/>..comment removed..<hr/>");
+    $(jComment).addClass('removed');
+  });
+
+
