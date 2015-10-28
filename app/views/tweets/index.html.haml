@@ -2,9 +2,9 @@
 
 .container.tweets
   .row
-    .col-md-10.left-side
+    .col-sm-10.left-side
       .row.new-tweet
-        .col-md-8.col-md-offset-2
+        .col-sm-8.col-sm-offset-2
           .input-group.input-group-lg
             %input.form-control{id:'post_name', placeholder:'post your 100-char tweet..', type:'text', maxlength:100}
             %span.input-group-btn
@@ -12,12 +12,12 @@
           %span.help-block
             Your post will be shown to others immediately!
       .row
-        Recent tweets:
-        %br
-        #recent_tweets.col-md-10
+        .col-sm-12
+          Recent tweets:
+        .col-sm-10{id:'recent_tweets'}
           =render @tweets
 
-    .col-md-2.right-side
+    .col-sm-2.right-side
       %p
         %b Your profile:
       %img{src:current_user.profile.picture_url}

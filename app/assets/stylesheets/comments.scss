@@ -1,3 +1,28 @@
-// Place all the styles related to the Comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.tweet-comments .new-comment {
+  display:none;
+}
+
+.tweet-comments .comment {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.tweet-comments .comment-author img {
+  width: 36px;
+}
+
+.tweet-comments .comment-icons span{
+  cursor: pointer;
+}
+
+.tweet-comments .comment-icons .star i:hover{
+  color: #7bc4ff;
+}
+
+.tweet-comments .comment-icons .like i:hover{
+  color: #ff15dd;
+}
+
+.tweet-comments .comment-icons .trash i:hover{
+  color: #f33319;
+}

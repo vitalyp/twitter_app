@@ -10,17 +10,22 @@ DOMFactory.prototype.new_tweet = function(tweet_id, tweet_name, user_name, user_
     "<div data-tweet-id='tweet_id' class='row single-tweet'>"+
       "<div class='col-md-1 tweet-author'>"+
         "<img src='user_picture_url'/>"+
-        "<div class='name'>user_name</div>"+
       "</div>"+
       "<div class='col-md-8 tweet-name'>"+
+        "<p class='wrote-at'>"+
+          "user_name wrote:"+
+        "</p>"+
         "tweet_name"+
       "</div>"+
       "<div class='col-md-3 tweet-icons'>"+
-        "<span class='comment js' onclick='tweet_comment(tweet_id)'><i class='fa fa-comment transition'></i></span>"+
-        "<span class='star js' onclick='tweet_toggle_star(tweet_id)'><i class='fa fa-star transition'></i></span>"+
-        "<span class='like js' onclick='tweet_toggle_like(tweet_id)'><i class='fa fa-heart transition'></i></span>"+
-        (this._cur_user_id == user_id ? "<span class='trash js' onclick='tweet_trash(tweet_id)'><i class='fa fa-trash-o'></i></span>" : "<span>&nbsp;</span>")+
-        "<br/><div class='timeago' onclick=''>right now</div>"+
+        "<div class='row'>"+
+          "<div class='col-md-3'><span class='comment js' onclick='tweet_comment(tweet_id)'><i class='fa fa-comment transition'></i></span></div>"+
+          "<div class='col-md-3'><span class='star js' onclick='tweet_toggle_star(tweet_id)'><i class='fa fa-star transition'></i></span></div>"+
+          "<div class='col-md-3'><span class='like js' onclick='tweet_toggle_like(tweet_id)'><i class='fa fa-heart transition'></i></span></div>"+
+          "<div class='col-md-3'>"+
+            (this._cur_user_id == user_id ? "<span class='trash js' onclick='tweet_trash(tweet_id)'><i class='fa fa-trash-o'></i></span>" : "<span>&nbsp;</span>")+
+          "</div>"+
+        "</div>"+
       "</div>"+
       "<div class='col-md-12 tweet-comments'>"+
         "<div class='row new-comment'>"+
@@ -47,16 +52,20 @@ DOMFactory.prototype.new_comment = function(comment_id, tweet_id, comment_name, 
     "<div data-comment-id='comment_id' class='row comment'>"+
       "<div class='col-md-1 comment-author'>"+
         "<img src='user_picture_url'/>"+
-        "<div class='name'>user_name</div>"+
     "</div>"+
     "<div class='col-md-8 comment-name'>"+
+      "<p class='commented-at'>"+
+        "user_name commented:"+
+      "</p>"+
       "comment_name"+
     "</div>"+
     "<div class='col-md-3 comment-icons'>"+
-      "<span class='star js' onclick='comment_toggle_star(comment_id)'><i class='fa fa-star transition'></i></span>"+
-      "<span class='like js' onclick='comment_toggle_like(comment_id)'><i class='fa fa-heart transition'></i></span>"+
-      (this._cur_user_id == user_id ? "<span class='trash js' onclick='comment_trash(comment_id)'><i class='fa fa-trash-o'></i></span>" : "<span>&nbsp;</span>")+
-      "<br/><div class='timeago' onclick=''>right now</div>"+
+      "<div class='row'>"+
+        "<div class='col-md-3'><span class='star js' onclick='comment_toggle_star(comment_id)'><i class='fa fa-star transition'></i></span></div>"+
+        "<div class='col-md-3'><span class='like js' onclick='comment_toggle_like(comment_id)'><i class='fa fa-heart transition'></i></span></div>"+
+        "<div class='col-md-3'>"+
+          (this._cur_user_id == user_id ? "<span class='trash js' onclick='comment_trash(comment_id)'><i class='fa fa-trash-o transition'></i></span>" : "<span>&nbsp;</span>")+
+        "</div>"+
     "</div>").
       replace(/comment_id/g, comment_id).
       replace('comment_name', comment_name).

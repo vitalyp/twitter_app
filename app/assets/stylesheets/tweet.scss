@@ -17,7 +17,7 @@
 
 .single-tweet .tweet-author{
   padding: 9px 0 0 5px;
-  text-align: center;
+  text-align: left;
 }
 
 .single-tweet .tweet-icons {
@@ -56,32 +56,17 @@
   border: 1px solid black;
 }
 
-.single-tweet .tweet-author .name{
-  font-size: 12px;
-}
-
 .single-tweet .tweet-name{
   padding: 10px;
   font-size: 17px;
 }
 
-.single-tweet .timeago{
-  float: right;
-  margin-top: 18px;
+.single-tweet .wrote-at{
   font-size: 12px;
   color: gray;
 }
 
 .single-tweet .tweet-comments{
-  padding: 10px;
-  font-size: 12px;
-}
-
-.single-tweet .new-comment {
-  display:none;
-}
-
-.single-tweet .comment {
   padding: 10px;
   font-size: 12px;
 }

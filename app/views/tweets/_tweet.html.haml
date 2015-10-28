@@ -1,32 +1,39 @@
 .row.single-tweet{'data-tweet-id'=> tweet.id}
   .col-md-1.tweet-author
     %img{src: tweet.user.profile.picture_url}
-    .name= tweet.user.short_name
   .col-md-8.tweet-name
+    %p.wrote-at
+      = "#{tweet.user.short_name} wrote #{relative_time(tweet.created_at)}:"
     = tweet.name
   .col-md-3.tweet-icons
-    %span.comment{onclick:"tweet_comment('#{tweet.id}')"}
-      %i.fa.fa-comment.transition
-    %span.star{onclick:"tweet_toggle_star('#{tweet.id}')"}
-      %i.fa.fa-star.transition
-    %span.like{onclick:"tweet_toggle_like('#{tweet.id}')"}
-      %i.fa.fa-heart.transition
-    - if tweet.user == current_user
-      %span.trash{onclick:"tweet_trash('#{tweet.id}')"}
-        %i.fa.fa-trash-o
-    - else
-      %span
-        &nbsp;
-    %br
-    .timeago
-      = relative_time(tweet.created_at)
-  .col-md-12.tweet-comments
+    .row
+      .col-sm-3
+        %span.comment{onclick:"tweet_comment('#{tweet.id}')"}
+          %i.fa.fa-comment.transition
+      .col-sm-3
+        %span.star{onclick:"tweet_toggle_star('#{tweet.id}')"}
+          %i.fa.fa-star.transition
+      .col-sm-3
+        %span.like{onclick:"tweet_toggle_like('#{tweet.id}')"}
+          %i.fa.fa-heart.transition
+      .col-sm-3
+        - if tweet.user == current_user
+          %span.trash{onclick:"tweet_trash('#{tweet.id}')"}
+            %i.fa.fa-trash-o
+        - else
+          %span
+            &nbsp;
+  .col-sm-12.tweet-comments
     .row.new-comment
-      .col-md-10.col-md-offset-1
+      .col-sm-10.col-sm-offset-1
         .input-group.input-group-sm
           %input.form-control{placeholder:'new comment..', type:'text', maxlength:100}
           %span.input-group-btn
             %button.btn.btn-default.comment-btn{type:'button', onclick:'post_comment_btn(this)'} Comment
-    .row
-      Comments:
-    = render tweet.comments
+    - if tweet.comments.any?
+      .row
+        .col-sm-12
+          %hr
+          Comments:
+        .col-sm-12
+      = render tweet.comments

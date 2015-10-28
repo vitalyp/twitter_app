@@ -1,20 +1,22 @@
 .row.comment{"data-comment-id"=> comment.id}
-  .col-md-1.comment-author
+  .col-sm-1.comment-author
     %img{src: comment.user.profile.picture_url}
-    .name= comment.user.short_name
-  .col-md-8.comment-name
+  .col-sm-8.comment-name
+    %p.wrote-at
+      = "#{comment.user.short_name} commented #{relative_time(comment.created_at)}:"
     = comment.name
-  .col-md-3.comment-icons
-    %span.star.js{onclick: "comment_toggle_star('#{comment.id}')"}
-      %i.fa.fa-star.transition
-    %span.like.js{onclick: "comment_toggle_like('#{comment.id}')"}
-      %i.fa.fa-heart.transition
-    - if comment.user == current_user
-      %span.trash{onclick:"comment_trash('#{comment.id}')"}
-        %i.fa.fa-trash-o
-    - else
-      %span
-        &nbsp;
-    %br
-    .timeago{:onclick => ""} right now
-
+  .col-sm-3.comment-icons
+    .row
+      .col-sm-3
+        %span.star.js{onclick: "comment_toggle_star('#{comment.id}')"}
+          %i.fa.fa-star.transition
+      .col-sm-3
+        %span.like.js{onclick: "comment_toggle_like('#{comment.id}')"}
+          %i.fa.fa-heart.transition
+      .col-sm-3
+        - if comment.user == current_user
+          %span.trash{onclick:"comment_trash('#{comment.id}')"}
+            %i.fa.fa-trash-o
+        - else
+          %span
+            &nbsp;
