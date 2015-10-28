@@ -16,7 +16,8 @@ class TweetsController < ApplicationController
           tweet_id: @tweet.id,
           tweet_name: @tweet.name,
           user_name: @tweet.user.short_name,
-          user_picture_url: @tweet.user.picture_url
+          user_picture_url: @tweet.user.picture_url,
+          user_id: @tweet.user.id
         })
       rescue Pusher::Error => e
         p e

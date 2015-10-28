@@ -12,8 +12,8 @@
           %span.help-block
             Your post will be shown to others immediately!
       .row
+        Recent tweets:
         #recent_tweets.col-md-10
-          Recent tweets:
           =render @tweets
 
     .col-md-2.right-side
@@ -27,25 +27,21 @@
 -#END
 :javascript
   var channel = pusher.subscribe('tweet_channel');
-  channel.bind('destroy_tweet', function(data) {
-    tweet_id = data.tweet_id;
-    $('.single-tweet[data-tweet_id="ID"]'.replace('ID', tweet_id)).remove();
-  });
-
-  var channel = pusher.subscribe('tweet_channel');
+  var cur_user_id = $("meta[name=cur-user-id]").attr("content")
+  var dom_factory = new DOMFactory(cur_user_id);
+  /*
+  * NEW Tweet event registered
+  * */
   channel.bind('new_tweet', function(data) {
-    tweet_id = data.tweet_id;
-    tweet_name = data.tweet_name;
-    user_name = data.user_name;
-    user_picture_url = data.user_picture_url;
-    console.log('new tweet registered');
-    console.log('tweet id: ' + tweet_id);
-    console.log('tweet name: ' + tweet_name);
-    console.log('user name: ' + user_name);
-    console.log('user picture url: ' + user_picture_url);
-    add_tweet(tweet_id, tweet_name, user_name, user_picture_url)
-
+    add_tweet(data.tweet_id, data.tweet_name, data.user_name, data.user_picture_url, data.user_id)
   });
+  function add_tweet(tweet_id, tweet_name, user_name, user_picture_url, user_id) {
+    var new_tweet = dom_factory.new_tweet(tweet_id, tweet_name, user_name, user_picture_url, user_id);
+    $('#recent_tweets').prepend(new_tweet);
+  }
+  /*
+  * NEW Comment event registered
+  * */
   channel.bind('new_comment', function(data) {
     tweet_id = data.tweet_id;
     comment_name = data.comment_name;
@@ -55,20 +51,9 @@
     console.log('comment name: ' + comment_name);
     console.log('user picture url: ' + user_picture_url);
   });
-  function add_tweet(tweet_id, tweet_name, user_name, user_picture_url) {
-    new_tweet = (
-      "<div data-tweet_id='tweet_id' class='row single-tweet'>"+
-        "<div class='col-md-1 tweet-author'>"+
-          "<img src='user_picture_url'>"+
-          "<div class='name'>user_name</div>"+
-        "</div>"+
-        "<div class='col-md-7 tweet-name'>"+
-          "tweet_name"+
-        "</div>"+
-      "</div>").
-      replace('tweet_id', tweet_id).
-      replace('tweet_name', tweet_name).
-      replace('user_name', user_name).
-      replace('user_picture_url', user_picture_url);
-    $('#recent_tweets').prepend(new_tweet);
-  }
+  /*
+  * DELETE Tweet event registered
+  * */
+  channel.bind('destroy_tweet', function(data) {
+    $('.single-tweet[data-tweet_id="ID"]'.replace('ID', data.tweet_id)).remove();
+  });
