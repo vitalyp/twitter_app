@@ -5,14 +5,18 @@
   .col-md-8.tweet-name
     = tweet.name
   .col-md-3.tweet-icons
-    %span.comment
+    %span.comment{onclick:"tweet_comment('#{tweet.id}')"}
       %i.fa.fa-comment.transition
-    %span.star
+    %span.star{onclick:"tweet_toggle_star('#{tweet.id}')"}
       %i.fa.fa-star.transition
-    %span.like
+    %span.like{onclick:"tweet_toggle_like('#{tweet.id}')"}
       %i.fa.fa-heart.transition
-    %span.trash{'data-tweet_id'=> tweet.id}
-      %i.fa.fa-trash-o
+    - if tweet.user == current_user
+      %span.trash{onclick:"tweet_trash('#{tweet.id}')"}
+        %i.fa.fa-trash-o
+    - else
+      %span
+        &nbsp;
     %br
     .timeago
       = relative_time(tweet.created_at)

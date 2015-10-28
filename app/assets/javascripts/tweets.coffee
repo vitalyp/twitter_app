@@ -1,7 +1,26 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+#
+# TWEETs Icons Functions:
+tweet_trash = (tweet_id) ->
+  if confirm('Are you sure you want to delete this Tweet?')
+    tweet_id = $(this).data('tweet_id')
+    $.ajax
+      url: '/tweets/'+tweet_id
+      type: 'DELETE'
+      success: (resp) ->
+        console.log resp
+  return
 
+tweet_comment = (tweet_id) ->
+  alert('TODO: add some comments processing')
+
+tweet_toggle_star = (tweet_id) ->
+  alert('TODO: add some star processing')
+
+tweet_toggle_like = (tweet_id) ->
+  alert('TODO: add some like processing')
+
+#
+# Common interface processing:
 $ ->
   $("#post_btn").click ->
     post_name = $("#post_name").val()
@@ -23,12 +42,4 @@ $ ->
       $('#post_btn').click()
     return
 
-  $('.trash').click (e) ->
-    if confirm('Are you sure you want to delete this Tweet?')
-      tweet_id = $(this).data('tweet_id')
-      $.ajax
-        url: '/tweets/'+tweet_id
-        type: 'DELETE'
-        success: (resp) ->
-          console.log resp
-    return
+
