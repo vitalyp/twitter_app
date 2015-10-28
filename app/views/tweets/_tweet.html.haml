@@ -1,6 +1,9 @@
 .row.single-tweet{'data-tweet-id'=> tweet.id}
   .col-md-1.tweet-author
     %img{src: tweet.user.profile.picture_url}
+    %span.star.user-follow{'data-star-user-id'=>tweet.user.id}
+
+    <span class='star js' data-star-tweet-id='tweet_id' onclick='tweet_toggle_star(tweet_id)'><i class='fa fa-star transition' title='Follow Tweet'></i></span>
   .col-md-8.tweet-name
     %p.wrote-at
       = "#{tweet.user.short_name} wrote #{relative_time(tweet.created_at)}:"
@@ -8,22 +11,27 @@
   .col-md-3.tweet-icons
     .row
       .col-sm-3
-        %span.comment{onclick:"tweet_comment('#{tweet.id}')"}
+        %span.comment{onclick:"tweet_comment('#{tweet.id}')",
+                      title: 'Comment tweet'}
           %i.fa.fa-comment.transition
       .col-sm-3
         %span.star{ 'data-star-tweet-id'=> tweet.id,
-                    onclick:"tweet_toggle_star('#{tweet.id}')"}
+                    class:"#{"starred" if tweet.followed_by?(current_user)}",
+                    onclick:"tweet_toggle_star('#{tweet.id}')",
+                    title: 'Follow Tweet'}
           %i.fa.fa-star.transition
       .col-sm-3{style:'text-align:center'}
         %span.like{ 'data-like-tweet-id'=> tweet.id,
                     class:"#{"liked" if tweet.liked_by?(current_user)}",
-                    onclick:"tweet_toggle_like('#{tweet.id}')"}
+                    onclick:"tweet_toggle_like('#{tweet.id}')",
+                    title: 'Like Tweet'}
           %i.fa.fa-heart.transition
         %i.like-count{'data-like-count-tweet-id'=> tweet.id}
           = tweet.likers(User).count
       .col-sm-3
         - if tweet.user == current_user
-          %span.trash{onclick:"tweet_trash('#{tweet.id}')"}
+          %span.trash{onclick:"tweet_trash('#{tweet.id}')",
+                      title: 'Delete tweet'}
             %i.fa.fa-trash-o
         - else
           %span

@@ -19,11 +19,11 @@ DOMFactory.prototype.new_tweet = function(tweet_id, tweet_name, user_name, user_
       "</div>"+
       "<div class='col-md-3 tweet-icons'>"+
         "<div class='row'>"+
-          "<div class='col-md-3'><span class='comment js' onclick='tweet_comment(tweet_id)'><i class='fa fa-comment transition'></i></span></div>"+
-          "<div class='col-md-3'><span class='star js' data-star-tweet-id='tweet_id' onclick='tweet_toggle_star(tweet_id)'><i class='fa fa-star transition'></i></span></div>"+
-          "<div class='col-md-3' style='text-align:center'><span class='like js' data-like-tweet-id='tweet_id' onclick='tweet_toggle_like(tweet_id)'><i class='fa fa-heart transition'></i></span><i class='like-count' data-like-count-tweet-id='tweet_id'>0</i></div>"+
+          "<div class='col-md-3'><span class='comment js' onclick='tweet_comment(tweet_id)'><i class='fa fa-comment transition' title='Comment tweet'></i></span></div>"+
+          "<div class='col-md-3'><span class='star js' data-star-tweet-id='tweet_id' onclick='tweet_toggle_star(tweet_id)'><i class='fa fa-star transition' title='Follow Tweet'></i></span></div>"+
+          "<div class='col-md-3' style='text-align:center'><span class='like js' data-like-tweet-id='tweet_id' onclick='tweet_toggle_like(tweet_id)'><i class='fa fa-heart transition' title='Like tweet'></i></span><i class='like-count' data-like-count-tweet-id='tweet_id'>0</i></div>"+
           "<div class='col-md-3'>"+
-            (this._cur_user_id == user_id ? "<span class='trash js' onclick='tweet_trash(tweet_id)'><i class='fa fa-trash-o'></i></span>" : "<span>&nbsp;</span>")+
+            (this._cur_user_id == user_id ? "<span class='trash js' title='Delete Tweet' onclick='tweet_trash(tweet_id)'><i class='fa fa-trash-o'></i></span>" : "<span>&nbsp;</span>")+
           "</div>"+
         "</div>"+
       "</div>"+
@@ -61,10 +61,9 @@ DOMFactory.prototype.new_comment = function(comment_id, tweet_id, comment_name, 
     "</div>"+
     "<div class='col-md-3 comment-icons'>"+
       "<div class='row'>"+
-        "<div class='col-md-3'><span class='star js' data-star-comment-id='comment_id' onclick='comment_toggle_star(comment_id)'><i class='fa fa-star transition'></i></span></div>"+
-        "<div class='col-md-3' style='text-align:center'><span class='like js' data-star-comment-id='comment_id' onclick='comment_toggle_like(comment_id)'><i class='fa fa-heart transition'></i><i class='like-count' data-like-count-comment-id='comment_id'>0</i></span></div>"+
+        "<div class='col-md-3' style='text-align:center'><span class='like js' title='Like Comment' data-star-comment-id='comment_id' onclick='comment_toggle_like(comment_id)'><i class='fa fa-heart transition'></i><i class='like-count' data-like-count-comment-id='comment_id'>0</i></span></div>"+
         "<div class='col-md-3'>"+
-          (this._cur_user_id == user_id ? "<span class='trash js' onclick='comment_trash(comment_id)'><i class='fa fa-trash-o transition'></i></span>" : "<span>&nbsp;</span>")+
+          (this._cur_user_id == user_id ? "<span class='trash js' title='Delete Comment' onclick='comment_trash(comment_id)'><i class='fa fa-trash-o transition'></i></span>" : "<span>&nbsp;</span>")+
         "</div>"+
     "</div>").
       replace(/comment_id/g, comment_id).
