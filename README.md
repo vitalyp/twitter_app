@@ -1,7 +1,9 @@
 ##How to use:
-    git clone git@github.com:vitalyp/twitter_app.git
+    $ git clone git@github.com:vitalyp/twitter_app.git
     bundle
-    rake db:migrate #-> may require you local db setup step
+    $ rake db:migrate #-> may require you local db setup step
+    update .env file to match proper credentials (optionally,
+    .. provide them through ENV vars)
 
 ##Rake tasks:
 
