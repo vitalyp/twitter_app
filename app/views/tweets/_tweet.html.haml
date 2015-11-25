@@ -40,7 +40,7 @@
     .row.new-comment
       .col-sm-10.col-sm-offset-1
         .input-group.input-group-sm
-          %input.form-control{placeholder:'new comment..', type:'text', maxlength:100}
+          %input.form-control{placeholder:'new comment..', type:'text'}
           %span.input-group-btn
             %button.btn.btn-default.comment-btn{type:'button', onclick:'post_comment_btn(this)'} Comment
     - if tweet.comments.any?

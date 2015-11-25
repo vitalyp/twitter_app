@@ -33,17 +33,14 @@ $ ->
   $("#post_btn").click ->
     post_name = $("#post_name").val()
     $('#post_name').val("")
-    if post_name.length > 100
-      alert "post is too long, make it shorter!"
-    else
-      console.log post_name
-      $.ajax
-        url: '/tweets'
-        type: 'POST'
-        data: tweet:
-          name: post_name
-        success: (resp) ->
-          console.log resp
+    console.log post_name
+    $.ajax
+      url: '/tweets'
+      type: 'POST'
+      data: tweet:
+        name: post_name
+      success: (resp) ->
+        console.log resp
 
   $('#post_name').keyup (event) ->
     if event.keyCode == 13
