@@ -43,7 +43,7 @@ $ ->
         console.log resp
 
   $('#post_name').keyup (event) ->
-    if event.keyCode == 13
-      $('#post_btn').click()
+    #if event.keyCode == 13
+    #  $('#post_btn').click()
     return
 
