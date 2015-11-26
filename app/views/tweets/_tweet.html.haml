@@ -7,7 +7,7 @@
   .col-md-8.tweet-name
     %p.wrote-at
       = "#{tweet.user.short_name} wrote #{relative_time(tweet.created_at)}:"
-    = tweet.name
+    = tweet.name.html_safe
   .col-md-3.tweet-icons
     .row
       .col-sm-3
