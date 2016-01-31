@@ -1,0 +1,2 @@
+module NotifiesControllerHelper
+end

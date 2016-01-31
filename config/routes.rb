@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :sessions
   resources :users
+  resources :notifies
 
   get ':id' => 'users#show', as: :user_profile
   get ':id/setting' => 'users#edit', as: :user_setting
