@@ -4,19 +4,19 @@
   .row
     .col-sm-10.left-side
       .row.new-tweet
-        .col-sm-2
+        .col-sm-2.emoticon_cell
           /Emoticons!
           %a.btn.btn-primary.btn-emoticons-collapser{"aria-controls" => "collapseEmoticons", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseEmoticons", :role => "button"}
             = ":)"
           #collapseEmoticons.collapse
             .well
               = ":-) :-) :) :o) :c) :^) :-D :-( :-9 ;-) :-P :-p :-Þ :-b :-O :-/ :-X :-# :'( B-) 8-) ;*( :-* :] =] =) 8) :} :D 8D XD xD =D :( :[ :{ =( ;) ;] ;D :P :p =P =p :b :Þ :O 8O :/ =/ :S :# :X B) O:)"
-        .col-sm-8
+        .col-sm-10
           .input-group.input-group-lg
-            %textarea.form-control{id:'tweet_text_input', placeholder:'post your tweet..', type:'text', cols:"40", rows:"5", style: 'height: 100px'}
+            %textarea.form-control{id:'tweet_text_input', placeholder:'напишите что-то..', type:'text', cols:"40", rows:"5", style: 'height: 100px'}
 
             %span.input-group-btn
-              %button.btn.btn-default{id:'post_btn', type:'button'} Post
+              %button.btn.btn-default{id:'post_btn', type:'button'} Опубликовать!
           %span.help-block
             Ваш пост будет мгновенно отображён всем посетителям!
       .row
