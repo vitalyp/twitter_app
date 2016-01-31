@@ -1,3 +1,23 @@
+#post_btn {
+  margin-left: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 16px;
+  background: rgba(255, 143, 0, 0.56);
+}
+.emoticon_cell {
+  text-align: right;
+  .well {
+    padding: 5px;
+    .animated-emoticon {
+      font-size: 11px;
+    }
+  }
+}
+.help-block {
+  text-align: center;
+  font-style: italic;
+}
+
 .navbar-nav {
   float:right;
   text-align: center;
