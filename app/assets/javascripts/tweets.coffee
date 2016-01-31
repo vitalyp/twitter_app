@@ -51,5 +51,11 @@ $ ->
     #  $('#post_btn').click()
     return
 
-  $('.form-control, .tweet-name').emoticonize();
-
+  $('.tweet-name').emoticonize({delay: 800,animate: true})
+  $('.comment-name').emoticonize({delay: 1200,animate: true})
+  $('.well').emoticonize()
+  $('.btn-emoticons-collapser').emoticonize({delay: 0, animate: false})
+  
+  $('#collapseEmoticons .animated-emoticon').click ->
+    emoticon_code = $(this).text()
+    $('#tweet_text_input').append(" " + emoticon_code + " ")
