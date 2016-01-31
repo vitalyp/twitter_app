@@ -4,7 +4,7 @@ window.post_comment_btn = (btn) ->
   new_comment_block = $(btn).parents('.new-comment')
   new_comment_input = $(new_comment_block).find('input')
   comment_name = $(new_comment_input).val();
-  if comment_name.length > 100
+  if comment_name.length > 800
     alert "comment is too long, make it shorter!"
   else
     $(new_comment_input).val("")

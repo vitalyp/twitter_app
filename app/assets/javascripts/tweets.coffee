@@ -33,7 +33,7 @@ $ ->
   $("#post_btn").click ->
     post_name = $("#post_name").val()
     $('#post_name').val("")
-    if post_name.length > 100
+    if post_name.length > 2800
       alert "post is too long, make it shorter!"
     else
       console.log post_name

@@ -31,7 +31,7 @@ DOMFactory.prototype.new_tweet = function(tweet_id, tweet_name, user_name, user_
         "<div class='row new-comment'>"+
           "<div class='col-md-10 col-md-offset-1'>"+
             "<div class='input-group input-group-sm'>"+
-              "<input class='form-control' maxlength='100' placeholder='new comment..' type='text'/>"+
+              "<input class='form-control' maxlength='2800' placeholder='new comment..' type='text'/>"+
               "<span class='input-group-btn'>"+
                 "<button class='btn btn-default comment-btn' type='button' onclick='post_comment_btn(this)'>Comment</button>"+
               "</span>"+

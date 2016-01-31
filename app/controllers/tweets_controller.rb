@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   include ActionView::Helpers::DateHelper
   def index
-    @tweets = Tweet.limit(10).order("created_at desc")
+    @tweets = Tweet.limit(100).order("created_at desc")
   end
 
   def create
