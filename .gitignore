@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 /.idea
-/public
+
+
 /test
