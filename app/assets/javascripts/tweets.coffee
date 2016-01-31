@@ -51,3 +51,5 @@ $ ->
     #  $('#post_btn').click()
     return
 
+  $('.form-control, .tweet-name').emoticonize();
+
