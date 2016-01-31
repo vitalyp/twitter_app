@@ -6,7 +6,11 @@
   <%= tag :meta, :name => "pusher-key", :content => "#{ENV['PUSHER_KEY']}"%>
   <%= tag :meta, :name => "cur-user-id", :content => "#{current_user ? current_user.id : ''}"%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <!-- Fix unsupported property -->
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
+
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
