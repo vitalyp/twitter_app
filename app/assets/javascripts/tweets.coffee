@@ -31,22 +31,22 @@ window.tweet_toggle_like = (tweet_id) ->
 # Common interface processing:
 $ ->
   $("#post_btn").click ->
-    post_name = $("#tweet_text_input").val()
-    $('#post_name').val("")
+    tweet_text = $("#tweet_text_input").val()
+    $('#tweet_text_input').val("")
 
-    if post_name.length > 2800
+    if tweet_text.length > 2800
       alert "post is too long, make it shorter!"
     else
-      console.log post_name
+      console.log tweet_text
       $.ajax
         url: '/tweets'
         type: 'POST'
         data: tweet:
-          name: post_name
+          name: tweet_text
         success: (resp) ->
           console.log resp
 
-  $('#post_name').keyup (event) ->
+  $('#tweet_text_input').keyup (event) ->
     #if event.keyCode == 13
     #  $('#post_btn').click()
     return
