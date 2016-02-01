@@ -31,7 +31,7 @@ window.tweet_toggle_like = (tweet_id) ->
 # Common interface processing:
 $ ->
   $("#post_btn").click ->
-    post_name = $("#post_name").val()
+    post_name = $("#tweet_text_input").val()
     $('#post_name').val("")
 
     if post_name.length > 2800
