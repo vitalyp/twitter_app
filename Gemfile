@@ -1,6 +1,10 @@
 source 'http://rubygems.org'
 
 # Standard Rails set of gems:
+
+gem "paranoia", "~> 2.0"
+
+
 gem 'rails', '4.2.4'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
@@ -13,6 +17,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'twitter-bootstrap-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'haml-rails'
+#gem 'binding', group: :development, platforms: [:mingw, :mswin]
+#gem 'pry', group: :development, platforms: [:mingw, :mswin]
 # ENV-specified gems:
 gem "spring", group: :development                           # springify
 gem 'byebug', group: [:development, :test]                  # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -5,5 +5,6 @@ class Tweet < ActiveRecord::Base
 
   acts_as_likeable
   acts_as_followable
+  acts_as_paranoid
 
 end
