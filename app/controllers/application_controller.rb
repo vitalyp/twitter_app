@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
+  after_action :allow_iframe, only: :embed
   protect_from_forgery with: :exception
 
   private
+
+  def embed
+  end
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -14,6 +18,11 @@ class ApplicationController < ActionController::Base
       #flash[:error] = "You must be logged in to access this section"
       redirect_to new_session_path
     end
+  end
+
+
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 
 end
