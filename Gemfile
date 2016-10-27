@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 # Standard Rails set of gems:
 
-ruby '2.2.4'
+ruby '2.2.1'
 
 gem "paranoia", "~> 2.0"
 
