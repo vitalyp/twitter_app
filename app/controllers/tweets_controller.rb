@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :require_login
+  #before_action :require_login
 
   include ActionView::Helpers::DateHelper
   def index

@@ -24,6 +24,11 @@
   font-style: italic;
 }
 
+.navbar-brand {
+  color: magenta!important;
+  font-weight: bold;
+}
+
 .navbar-nav {
   float:right;
   text-align: center;
@@ -31,7 +36,7 @@
 
 .footer-container {
   background: #262626;
-  min-height: 230px;
+  min-height: 30px;
   color: rgb(187, 187, 187);
   display: block;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -44,7 +49,8 @@
 .footer-container .devider {
   margin: 0 5px;
 }
-.footer-container .footer-logo img {
+.footer-container .footer-logo img,
+.footer-logo img {
   height: 80px;
   opacity: 0.8;
   border-radius: 7px;

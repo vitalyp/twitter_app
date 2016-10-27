@@ -2,7 +2,7 @@
 
 .container.tweets
   .row
-    .col-sm-10.left-side
+    .col-sm-12
       .row.new-tweet
         .col-sm-2.emoticon_cell
           /Emoticons!
@@ -25,14 +25,14 @@
         .col-sm-10{id:'recent_tweets'}
           =render @tweets
 
-    .col-sm-2.right-side
-      %p
-        %b Ваш профиль:
-      %img{src:current_user.profile.picture_url}
-      %br
-      %br
-      = current_user.name
-      %hr
+    // .col-sm-2.right-side
+    //   %p
+    //     %b Ваш профиль:
+    //   %img{src:current_user.profile.picture_url}
+    //   %br
+    //   %br
+    //   = current_user.name
+    //   %hr
 -#END
 :javascript
   var channel = pusher.subscribe('tweet_channel');
