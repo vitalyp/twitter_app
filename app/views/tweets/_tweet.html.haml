@@ -12,26 +12,26 @@
     .row
       .col-sm-3
         %span.comment{onclick:"tweet_comment('#{tweet.id}')",
-                      title: 'Comment tweet'}
+                      title: 'Прокомментировать'}
           %i.fa.fa-comment.transition
       .col-sm-3
         %span.star{ 'data-star-tweet-id'=> tweet.id,
                     class:"#{"starred" if tweet.followed_by?(current_user)}",
                     onclick:"tweet_toggle_star('#{tweet.id}')",
-                    title: 'Follow Tweet'}
+                    title: 'Отслеживать'}
           %i.fa.fa-star.transition
       .col-sm-3{style:'text-align:center'}
         %span.like{ 'data-like-tweet-id'=> tweet.id,
                     class:"#{"liked" if tweet.liked_by?(current_user)}",
                     onclick:"tweet_toggle_like('#{tweet.id}')",
-                    title: 'Like Tweet'}
+                    title: 'Нравится'}
           %i.fa.fa-heart.transition
         %i.like-count{'data-like-count-tweet-id'=> tweet.id}
           = tweet.likers(User).count
       .col-sm-3
         - if tweet.user == current_user
           %span.trash{onclick:"tweet_trash('#{tweet.id}')",
-                      title: 'Delete tweet'}
+                      title: 'Удалить'}
             %i.fa.fa-trash-o
         - else
           %span
