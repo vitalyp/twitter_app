@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   def self.from_omniauth(auth)
+    #binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
@@ -19,6 +20,8 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save
 
+
+#binding.pry
       profile = user.build_profile
       profile.save #-> touch to get parent id
 

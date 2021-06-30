@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def create
+    #binding.pry
+    #p request.env['omniauth.auth']
+
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_url
@@ -14,6 +17,14 @@ class SessionsController < ApplicationController
   def sandbox
     flash[:success] = `Вы вошли под случайным пользователем!`
     session[:user_id] = User.pluck(:id).sample
+    redirect_to root_url
+  end
+
+  def failure
+    #puts request.env['omniauth.auth'].to_hash.inspect
+    flash[:error] = `Не удалось войти.`
+
+
     redirect_to root_url
   end
 

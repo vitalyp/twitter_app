@@ -1,6 +1,6 @@
-OmniAuth.config.logger = Rails.logger
+# OmniAuth.config.logger = Rails.logger
 
-require 'pry'
+# require 'pry'
 
 # environment variables can be defined in .env file.
 FB_APP_ID = ENV['FB_APP_ID']
@@ -8,12 +8,12 @@ FB_APP_SECRET = ENV['FB_APP_SECRET']
 G_APP_ID = ENV['GOOGLE_APP_ID']
 G_APP_SECRET = ENV['GOOGLE_APP_SECRET']
 
-if Rails.env.production?
-  GOOGLE_REDIRECT_URL = ENV['GOOGLE_REDIRECT_URL'] || 'https://vitalyp-twitter-app.herokuapp.com/auth/google/callback'
-else
-  GOOGLE_REDIRECT_URL = 'http://local.twitter.com:3000/auth/google/callback'
-  OmniAuth.config.full_host = 'http://local.twitter.com:3000'
-end
+# if Rails.env.production?
+#   GOOGLE_REDIRECT_URL = ENV['GOOGLE_REDIRECT_URL'] || 'https://vitalyp-twitter-app.herokuapp.com/auth/google/callback'
+# else
+#   GOOGLE_REDIRECT_URL = 'http://local.twitter.com:3000/auth/google/callback'
+#   OmniAuth.config.full_host = 'http://local.twitter.com:3000'
+# end
 
 
 # use OmniAuth::Builder do
@@ -25,8 +25,14 @@ end
 
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], skip_jwt: true
+  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'],
+    {
+      scope: 'email,profile'
+    }
 end
+
+OmniAuth.config.allowed_request_methods = %i[get]
+
 
 
 
