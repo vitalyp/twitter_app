@@ -2,17 +2,17 @@ source 'http://rubygems.org'
 
 # Standard Rails set of gems:
 
-ruby '2.2.1'
+ruby '2.7.3'
 
 gem "paranoia", "~> 2.0"
 
 
-gem 'rails', '4.2.4'
+gem 'rails', '~> 5.2.5'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -32,7 +32,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # Avatar files
-gem 'paperclip'
+#gem "paperclip", "~> 6.0.0"
+
 # Use babosa for url normalize
 gem 'babosa'
 # Ruby server library for the Pusher API http://pusher.com
