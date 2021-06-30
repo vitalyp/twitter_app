@@ -13,13 +13,23 @@ else
 end
 
 
-use OmniAuth::Builder do
-  #provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+# use OmniAuth::Builder do
+#   #provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
 
-  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], access_type: 'offline', prompt: 'consent', provider_ignores_state: true, scope: 'email,profile'
+#   provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], access_type: 'offline', prompt: 'consent', provider_ignores_state: true, scope: 'email,profile'
+# end
+
+
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'],
+    {
+      scope: 'userinfo.email, userinfo.profile',
+      prompt: 'select_account',
+      image_aspect_ratio: 'square',
+      image_size: 50
+    }
 end
-
-
 
 
 
