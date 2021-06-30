@@ -19,7 +19,7 @@ if Rails.env.production?
     provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
       name: 'google',
       skip_jwt: true,
-      scope: 'email, profile',
+      scope: 'userinfo.email, userinfo.profile',
       prompt: 'select_account',
       image_aspect_ratio: 'square',
       image_size: 50,
