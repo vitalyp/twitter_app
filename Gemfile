@@ -41,3 +41,5 @@ gem 'babosa'
 gem 'pusher'
 # Speed-up likes, follows
 gem 'socialization'
+
+gem 'pry'

@@ -1,4 +1,7 @@
 OmniAuth.config.logger = Rails.logger
+
+require 'pry'
+
 # environment variables can be defined in .env file.
 FB_APP_ID = ENV['FB_APP_ID']
 FB_APP_SECRET = ENV['FB_APP_SECRET']
@@ -22,13 +25,7 @@ end
 
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'],
-    {
-      scope: 'userinfo.email, userinfo.profile',
-      prompt: 'select_account',
-      image_aspect_ratio: 'square',
-      image_size: 50
-    }
+  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], skip_jwt: true
 end
 
 

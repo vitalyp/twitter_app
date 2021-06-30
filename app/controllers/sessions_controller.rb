@@ -27,5 +27,9 @@ class SessionsController < ApplicationController
   def user_params
     params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at) 
   end
+
+  def auth
+    request.env['omniauth.auth']
+  end
   
 end

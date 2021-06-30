@@ -11,7 +11,6 @@
       %i.fa.fa-facebook-square.fa-5x.facebook-square.soc-square.transition
         %h3 Через Facebook
   .col-md-4.calign
-    %a#sign_in_google{href:'/auth/google'}
+    = link_to '/auth/google_oauth2', { method: :post, id: 'sign_in_google'} do
       %i.fa.fa-google-plus-square.fa-5x.google-square.soc-square.transition
         %h3 Через Google
-
