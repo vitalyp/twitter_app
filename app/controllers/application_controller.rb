@@ -5,15 +5,14 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    User.first
-    # @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
   helper_method :current_user
 
   def require_login
     unless current_user
-      #flash[:error] = "You must be logged in to access this section"
+      flash[:error] = "You must be logged in to access this section"
       redirect_to new_session_path
     end
   end

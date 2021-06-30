@@ -16,7 +16,10 @@ Rails.application.routes.draw do
       post 'like'
     end
   end
-  resources :sessions
+  resources :sessions do
+    get 'sandbox', on: :collection
+  end
+
   resources :users
   resources :notifies
 
