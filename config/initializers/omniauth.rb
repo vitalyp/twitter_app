@@ -12,43 +12,54 @@ else
   OmniAuth.config.full_host = 'http://local.twitter.com:3000'
 end
 
-if Rails.env.production?
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, FB_APP_ID, FB_APP_SECRET,
-             :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
-    provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
-      name: 'google',
-      skip_jwt: true,
-      scope: 'userinfo.email, userinfo.profile',
-      prompt: 'select_account',
-      image_aspect_ratio: 'square',
-      image_size: 50,
-      setup: (lambda do |env|
-       request = Rack::Request.new(env)
-       env['omniauth.strategy'].options['token_params'] = {
-           redirect_uri: GOOGLE_REDIRECT_URL
-       }
-      end)
-    }
-  end
-else
 
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, FB_APP_ID, FB_APP_SECRET,
-             :scope => 'email', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}
-    provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
-      name: 'google',
-      skip_jwt: true,
-      scope: 'email, profile',
-      prompt: 'select_account',
-      image_aspect_ratio: 'square',
-      image_size: 50,
-      setup: (lambda do |env|
-       request = Rack::Request.new(env)
-       env['omniauth.strategy'].options['token_params'] = {
-           redirect_uri: GOOGLE_REDIRECT_URL
-       }
-      end)
-    }
-  end
+use OmniAuth::Builder do
+  #provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET']
+
+  provider :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], access_type: 'offline', prompt: 'consent', provider_ignores_state: true, scope: 'email,profile'
+end
+
+
+
+
+
+# if Rails.env.production?
+#   Rails.application.config.middleware.use OmniAuth::Builder do
+#     provider :facebook, FB_APP_ID, FB_APP_SECRET,
+#              :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
+#     provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
+#       name: 'google',
+#       skip_jwt: true,
+#       scope: 'userinfo.email, userinfo.profile',
+#       prompt: 'select_account',
+#       image_aspect_ratio: 'square',
+#       image_size: 50,
+#       setup: (lambda do |env|
+#        request = Rack::Request.new(env)
+#        env['omniauth.strategy'].options['token_params'] = {
+#            redirect_uri: GOOGLE_REDIRECT_URL
+#        }
+#       end)
+#     }
+#   end
+# else
+
+#   Rails.application.config.middleware.use OmniAuth::Builder do
+#     provider :facebook, FB_APP_ID, FB_APP_SECRET,
+#              :scope => 'email', :client_options => {:ssl => {:ca_file => "#{Rails.root}/config/ca-bundle.crt"}}
+#     provider :google_oauth2, G_APP_ID, G_APP_SECRET, {
+#       name: 'google',
+#       skip_jwt: true,
+#       scope: 'email, profile',
+#       prompt: 'select_account',
+#       image_aspect_ratio: 'square',
+#       image_size: 50,
+#       setup: (lambda do |env|
+#        request = Rack::Request.new(env)
+#        env['omniauth.strategy'].options['token_params'] = {
+#            redirect_uri: GOOGLE_REDIRECT_URL
+#        }
+#       end)
+#     }
+#   end
 end
