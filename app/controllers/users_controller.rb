@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login
-  before_filter :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
     current_user.build_profile if current_user.profile.nil?
