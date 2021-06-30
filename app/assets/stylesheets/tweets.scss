@@ -17,12 +17,84 @@
 
 .tweets .right-side {
   border-left: 1px solid gray;
-  text-align: right;
+  text-align: left;
   min-height: 300px;
 }
 
 .tweets .right-side img{
   height: 50px;
-  opacity: 0.8;
+  opacity: 1;
   border-radius: 7px;
+  margin: 0 20%;
+
+    text-shadow: -1px 7px 7px #050c057d;
+
+
+}
+
+#recent_tweets {
+  opacity: 0.8
+}
+
+.help-block {
+  display: flex;
+  text-align: center;
+  font-style: italic;
+
+  .tweets-description {
+    display: flex;
+    font-size: 13px !important;
+    padding: 2px 4px;
+    color: #fbfbfb;
+    background-color: #5e63670f;
+    border-radius: 5px;
+    padding-right: 26px;
+    font-style: italic;
+
+    // magic underline:
+    text-decoration-thickness: unset;
+    text-decoration-line: underline;
+    text-decoration-color: #f3e7ef21;
+    text-decoration-style: double;
+  }
+
+  .well.small {
+    padding: 1px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    span {
+      position: relative;
+      right: 25px;
+      bottom: 0px;
+      font-size: 17px;
+      z-index: 100;
+      opacity: 0.9;
+    }
+  }
+}
+
+
+
+textarea#tweet_text_input {
+
+  &::placeholder {
+    color: #34326;
+  }
+
+  font-size: 19px;
+  text-shadow: -1px 7px 7px #050c057d;
+  font-family: sans-serif;
+
+
+
+  // плавное изменение прозрачности  placeholder-а при фокусе
+  &::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+  &::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+  &:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+  &:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+  &:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+  &:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+  &:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+  &:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;} 
 }

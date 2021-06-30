@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
 
   validates_attachment :avatar,
                        content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
-                       size: { in: 0..1.megabytes }
+                       size: { in: 0..1.megabytes } 
 
   def avatar_from_url(url)
     self.avatar = URI.parse(url) rescue nil

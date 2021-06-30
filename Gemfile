@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-sass'
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'haml-rails'
 #gem 'binding', group: :development, platforms: [:mingw, :mswin]
@@ -30,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake d
 gem 'omniauth', '~> 2.0'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
+gem 'certified'
+
 # Avatar files
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '3543363026121ee28d98dfce4cb6366980c055ee'
 
