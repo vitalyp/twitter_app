@@ -27,9 +27,9 @@ gem 'byebug', group: [:development, :test]                  # Call 'byebug' anyw
 gem 'dotenv-rails', :groups => [:development, :test]        # .env file support
 gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake doc:rails generates the API under doc/api.
 # OAuth2 Strategies
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem "omniauth-google-oauth2"
+gem 'omniauth', '1.9.0'
+gem 'omniauth-facebook', '2.0.1'
+gem "omniauth-google-oauth2", '0.2.8'
 # Avatar files
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '3543363026121ee28d98dfce4cb6366980c055ee'
 
