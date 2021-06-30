@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  after_filter :allow_iframe
+  after_action :allow_iframe
   protect_from_forgery with: :exception
 
   private

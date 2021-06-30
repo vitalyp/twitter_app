@@ -25,14 +25,15 @@ gem 'haml-rails'
 gem "spring", group: :development                           # springify
 gem 'byebug', group: [:development, :test]                  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 gem 'dotenv-rails', :groups => [:development, :test]        # .env file support
-gem 'web-console', '~> 2.0' , group: [:development, :test]  # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'sdoc', '~> 0.4.0', group: :doc                         # bundle exec rake doc:rails generates the API under doc/api.
 # OAuth2 Strategies
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # Avatar files
-#gem "paperclip", "~> 6.0.0"
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '3543363026121ee28d98dfce4cb6366980c055ee'
+
+gem "paperclip", "~> 5.2.1"
 
 # Use babosa for url normalize
 gem 'babosa'
