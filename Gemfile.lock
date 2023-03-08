@@ -184,7 +184,7 @@ GEM
       pusher-signature (~> 0.1.8)
     pusher-signature (0.1.8)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.6.3)
     rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
